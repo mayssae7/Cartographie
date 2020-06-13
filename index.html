@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        #map {
+            width: 1014px;
+            height: 580px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/Provinces_0.js"></script>
+        <script src="data/Rgions_1.js"></script>
+        <script src="data/CarriresDakhlaOuedEdDahab_2.js"></script>
+        <script src="data/CarriresMarrakechSafi_3.js"></script>
+        <script src="data/CarriresCasablancaSettat_4.js"></script>
+        <script src="data/CarriresSoussMassa_5.js"></script>
+        <script src="data/CarriresTangerTtouanAlHoceima_6.js"></script>
+        <script src="data/CarriresFsMekns_7.js"></script>
+        <script src="data/CarriresRabatSalKnitra_8.js"></script>
+        <script src="data/CarriresBniMellalKhnifra_9.js"></script>
+        <script src="data/CarriresDraTafilalt_10.js"></script>
+        <script src="data/CarriresLayouneSakiaElHamra_11.js"></script>
+        <script src="data/CarrireslOriental_12.js"></script>
+        <script src="data/Caractristiquesintrinsques_13.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:24, minZoom:1
+        }).fitBounds([[19.655988557964047,-24.3932391175082],[38.51838222873493,8.633878985556255]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Provinces_0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID_1'] !== null ? autolinker.link(feature.properties['OBJECTID_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Provinces_0_0() {
+            return {
+                pane: 'pane_Provinces_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,185,206,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Provinces_0');
+        map.getPane('pane_Provinces_0').style.zIndex = 400;
+        map.getPane('pane_Provinces_0').style['mix-blend-mode'] = 'normal';
+        var layer_Provinces_0 = new L.geoJson(json_Provinces_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Provinces_0',
+            layerName: 'layer_Provinces_0',
+            pane: 'pane_Provinces_0',
+            onEachFeature: pop_Provinces_0,
+            style: style_Provinces_0_0,
+        });
+        bounds_group.addLayer(layer_Provinces_0);
+        map.addLayer(layer_Provinces_0);
+        function pop_Rgions_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Région</th>\
+                        <td>' + (feature.properties['Région'] !== null ? autolinker.link(feature.properties['Région'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Rgions_1_0() {
+            return {
+                pane: 'pane_Rgions_1',
+                opacity: 1,
+                color: 'rgba(82,82,82,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,247,247,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Rgions_1');
+        map.getPane('pane_Rgions_1').style.zIndex = 401;
+        map.getPane('pane_Rgions_1').style['mix-blend-mode'] = 'normal';
+        var layer_Rgions_1 = new L.geoJson(json_Rgions_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Rgions_1',
+            layerName: 'layer_Rgions_1',
+            pane: 'pane_Rgions_1',
+            onEachFeature: pop_Rgions_1,
+            style: style_Rgions_1_0,
+        });
+        bounds_group.addLayer(layer_Rgions_1);
+        map.addLayer(layer_Rgions_1);
+        function pop_CarriresDakhlaOuedEdDahab_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresDakhlaOuedEdDahab_2_0() {
+            return {
+                pane: 'pane_CarriresDakhlaOuedEdDahab_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,113,88,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresDakhlaOuedEdDahab_2');
+        map.getPane('pane_CarriresDakhlaOuedEdDahab_2').style.zIndex = 402;
+        map.getPane('pane_CarriresDakhlaOuedEdDahab_2').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresDakhlaOuedEdDahab_2 = new L.geoJson(json_CarriresDakhlaOuedEdDahab_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresDakhlaOuedEdDahab_2',
+            layerName: 'layer_CarriresDakhlaOuedEdDahab_2',
+            pane: 'pane_CarriresDakhlaOuedEdDahab_2',
+            onEachFeature: pop_CarriresDakhlaOuedEdDahab_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresDakhlaOuedEdDahab_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresDakhlaOuedEdDahab_2);
+        map.addLayer(layer_CarriresDakhlaOuedEdDahab_2);
+        function pop_CarriresMarrakechSafi_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresMarrakechSafi_3_0() {
+            return {
+                pane: 'pane_CarriresMarrakechSafi_3',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresMarrakechSafi_3');
+        map.getPane('pane_CarriresMarrakechSafi_3').style.zIndex = 403;
+        map.getPane('pane_CarriresMarrakechSafi_3').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresMarrakechSafi_3 = new L.geoJson(json_CarriresMarrakechSafi_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresMarrakechSafi_3',
+            layerName: 'layer_CarriresMarrakechSafi_3',
+            pane: 'pane_CarriresMarrakechSafi_3',
+            onEachFeature: pop_CarriresMarrakechSafi_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresMarrakechSafi_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresMarrakechSafi_3);
+        map.addLayer(layer_CarriresMarrakechSafi_3);
+        function pop_CarriresCasablancaSettat_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresCasablancaSettat_4_0() {
+            return {
+                pane: 'pane_CarriresCasablancaSettat_4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresCasablancaSettat_4');
+        map.getPane('pane_CarriresCasablancaSettat_4').style.zIndex = 404;
+        map.getPane('pane_CarriresCasablancaSettat_4').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresCasablancaSettat_4 = new L.geoJson(json_CarriresCasablancaSettat_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresCasablancaSettat_4',
+            layerName: 'layer_CarriresCasablancaSettat_4',
+            pane: 'pane_CarriresCasablancaSettat_4',
+            onEachFeature: pop_CarriresCasablancaSettat_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresCasablancaSettat_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresCasablancaSettat_4);
+        map.addLayer(layer_CarriresCasablancaSettat_4);
+        function pop_CarriresSoussMassa_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresSoussMassa_5_0() {
+            return {
+                pane: 'pane_CarriresSoussMassa_5',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,125,183,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresSoussMassa_5');
+        map.getPane('pane_CarriresSoussMassa_5').style.zIndex = 405;
+        map.getPane('pane_CarriresSoussMassa_5').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresSoussMassa_5 = new L.geoJson(json_CarriresSoussMassa_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresSoussMassa_5',
+            layerName: 'layer_CarriresSoussMassa_5',
+            pane: 'pane_CarriresSoussMassa_5',
+            onEachFeature: pop_CarriresSoussMassa_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresSoussMassa_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresSoussMassa_5);
+        map.addLayer(layer_CarriresSoussMassa_5);
+        function pop_CarriresTangerTtouanAlHoceima_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresTangerTtouanAlHoceima_6_0() {
+            return {
+                pane: 'pane_CarriresTangerTtouanAlHoceima_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,178,151,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresTangerTtouanAlHoceima_6');
+        map.getPane('pane_CarriresTangerTtouanAlHoceima_6').style.zIndex = 406;
+        map.getPane('pane_CarriresTangerTtouanAlHoceima_6').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresTangerTtouanAlHoceima_6 = new L.geoJson(json_CarriresTangerTtouanAlHoceima_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresTangerTtouanAlHoceima_6',
+            layerName: 'layer_CarriresTangerTtouanAlHoceima_6',
+            pane: 'pane_CarriresTangerTtouanAlHoceima_6',
+            onEachFeature: pop_CarriresTangerTtouanAlHoceima_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresTangerTtouanAlHoceima_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresTangerTtouanAlHoceima_6);
+        map.addLayer(layer_CarriresTangerTtouanAlHoceima_6);
+        function pop_CarriresFsMekns_7(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresFsMekns_7_0() {
+            return {
+                pane: 'pane_CarriresFsMekns_7',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,72,75,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresFsMekns_7');
+        map.getPane('pane_CarriresFsMekns_7').style.zIndex = 407;
+        map.getPane('pane_CarriresFsMekns_7').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresFsMekns_7 = new L.geoJson(json_CarriresFsMekns_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresFsMekns_7',
+            layerName: 'layer_CarriresFsMekns_7',
+            pane: 'pane_CarriresFsMekns_7',
+            onEachFeature: pop_CarriresFsMekns_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresFsMekns_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresFsMekns_7);
+        map.addLayer(layer_CarriresFsMekns_7);
+        function pop_CarriresRabatSalKnitra_8(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresRabatSalKnitra_8_0() {
+            return {
+                pane: 'pane_CarriresRabatSalKnitra_8',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,113,141,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresRabatSalKnitra_8');
+        map.getPane('pane_CarriresRabatSalKnitra_8').style.zIndex = 408;
+        map.getPane('pane_CarriresRabatSalKnitra_8').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresRabatSalKnitra_8 = new L.geoJson(json_CarriresRabatSalKnitra_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresRabatSalKnitra_8',
+            layerName: 'layer_CarriresRabatSalKnitra_8',
+            pane: 'pane_CarriresRabatSalKnitra_8',
+            onEachFeature: pop_CarriresRabatSalKnitra_8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresRabatSalKnitra_8_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresRabatSalKnitra_8);
+        map.addLayer(layer_CarriresRabatSalKnitra_8);
+        function pop_CarriresBniMellalKhnifra_9(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresBniMellalKhnifra_9_0() {
+            return {
+                pane: 'pane_CarriresBniMellalKhnifra_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,166,178,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresBniMellalKhnifra_9');
+        map.getPane('pane_CarriresBniMellalKhnifra_9').style.zIndex = 409;
+        map.getPane('pane_CarriresBniMellalKhnifra_9').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresBniMellalKhnifra_9 = new L.geoJson(json_CarriresBniMellalKhnifra_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresBniMellalKhnifra_9',
+            layerName: 'layer_CarriresBniMellalKhnifra_9',
+            pane: 'pane_CarriresBniMellalKhnifra_9',
+            onEachFeature: pop_CarriresBniMellalKhnifra_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresBniMellalKhnifra_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresBniMellalKhnifra_9);
+        map.addLayer(layer_CarriresBniMellalKhnifra_9);
+        function pop_CarriresDraTafilalt_10(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresDraTafilalt_10_0() {
+            return {
+                pane: 'pane_CarriresDraTafilalt_10',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresDraTafilalt_10');
+        map.getPane('pane_CarriresDraTafilalt_10').style.zIndex = 410;
+        map.getPane('pane_CarriresDraTafilalt_10').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresDraTafilalt_10 = new L.geoJson(json_CarriresDraTafilalt_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresDraTafilalt_10',
+            layerName: 'layer_CarriresDraTafilalt_10',
+            pane: 'pane_CarriresDraTafilalt_10',
+            onEachFeature: pop_CarriresDraTafilalt_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresDraTafilalt_10_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresDraTafilalt_10);
+        map.addLayer(layer_CarriresDraTafilalt_10);
+        function pop_CarriresLayouneSakiaElHamra_11(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarriresLayouneSakiaElHamra_11_0() {
+            return {
+                pane: 'pane_CarriresLayouneSakiaElHamra_11',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarriresLayouneSakiaElHamra_11');
+        map.getPane('pane_CarriresLayouneSakiaElHamra_11').style.zIndex = 411;
+        map.getPane('pane_CarriresLayouneSakiaElHamra_11').style['mix-blend-mode'] = 'normal';
+        var layer_CarriresLayouneSakiaElHamra_11 = new L.geoJson(json_CarriresLayouneSakiaElHamra_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarriresLayouneSakiaElHamra_11',
+            layerName: 'layer_CarriresLayouneSakiaElHamra_11',
+            pane: 'pane_CarriresLayouneSakiaElHamra_11',
+            onEachFeature: pop_CarriresLayouneSakiaElHamra_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarriresLayouneSakiaElHamra_11_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarriresLayouneSakiaElHamra_11);
+        map.addLayer(layer_CarriresLayouneSakiaElHamra_11);
+        function pop_CarrireslOriental_12(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Carrière</th>\
+                        <td>' + (feature.properties['Carrière'] !== null ? autolinker.link(feature.properties['Carrière'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Matériau</th>\
+                        <td>' + (feature.properties['Matériau'] !== null ? autolinker.link(feature.properties['Matériau'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CarrireslOriental_12_0() {
+            return {
+                pane: 'pane_CarrireslOriental_12',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,90,153,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CarrireslOriental_12');
+        map.getPane('pane_CarrireslOriental_12').style.zIndex = 412;
+        map.getPane('pane_CarrireslOriental_12').style['mix-blend-mode'] = 'normal';
+        var layer_CarrireslOriental_12 = new L.geoJson(json_CarrireslOriental_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CarrireslOriental_12',
+            layerName: 'layer_CarrireslOriental_12',
+            pane: 'pane_CarrireslOriental_12',
+            onEachFeature: pop_CarrireslOriental_12,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CarrireslOriental_12_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CarrireslOriental_12);
+        map.addLayer(layer_CarrireslOriental_12);
+        function pop_Caractristiquesintrinsques_13(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Région</th>\
+                        <td>' + (feature.properties['Région'] !== null ? autolinker.link(feature.properties['Région'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nature</th>\
+                        <td>' + (feature.properties['Nature'] !== null ? autolinker.link(feature.properties['Nature'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LA</th>\
+                        <td>' + (feature.properties['LA'] !== null ? autolinker.link(feature.properties['LA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MDE</th>\
+                        <td>' + (feature.properties['MDE'] !== null ? autolinker.link(feature.properties['MDE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">CPA</th>\
+                        <td>' + (feature.properties['CPA'] !== null ? autolinker.link(feature.properties['CPA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Fragmentab</th>\
+                        <td>' + (feature.properties['Fragmentab'] !== null ? autolinker.link(feature.properties['Fragmentab'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Dégradabi</th>\
+                        <td>' + (feature.properties['Dégradabi'] !== null ? autolinker.link(feature.properties['Dégradabi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FS</th>\
+                        <td>' + (feature.properties['FS'] !== null ? autolinker.link(feature.properties['FS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Caractristiquesintrinsques_13_0() {
+            return {
+                pane: 'pane_Caractristiquesintrinsques_13',
+                shape: 'diamond',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(128,17,25,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,79,98,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Caractristiquesintrinsques_13');
+        map.getPane('pane_Caractristiquesintrinsques_13').style.zIndex = 413;
+        map.getPane('pane_Caractristiquesintrinsques_13').style['mix-blend-mode'] = 'normal';
+        var layer_Caractristiquesintrinsques_13 = new L.geoJson(json_Caractristiquesintrinsques_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Caractristiquesintrinsques_13',
+            layerName: 'layer_Caractristiquesintrinsques_13',
+            pane: 'pane_Caractristiquesintrinsques_13',
+            onEachFeature: pop_Caractristiquesintrinsques_13,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Caractristiquesintrinsques_13_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Caractristiquesintrinsques_13);
+        map.addLayer(layer_Caractristiquesintrinsques_13);
+        map.on("zoomend", function(e) {
+            if (map.getZoom() <= 19 && map.getZoom() >= 2) {
+                map.addLayer(layer_Rgions_1);
+            } else if (map.getZoom() > 19 || map.getZoom() < 2) {
+                map.removeLayer(layer_Rgions_1);
+            }
+        });
+            if (map.getZoom() <= 19 && map.getZoom() >= 2) {
+                map.addLayer(layer_Rgions_1);
+            } else if (map.getZoom() > 19 || map.getZoom() < 2) {
+                map.removeLayer(layer_Rgions_1);
+            }
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Caractristiquesintrinsques_13.png" /> Caractéristiques intrinsèques': layer_Caractristiquesintrinsques_13,'<img src="legend/CarrireslOriental_12.png" /> Carrières l\'Oriental': layer_CarrireslOriental_12,'<img src="legend/CarriresLayouneSakiaElHamra_11.png" /> Carrières Laâyoune-Sakia El Hamra': layer_CarriresLayouneSakiaElHamra_11,'<img src="legend/CarriresDraTafilalt_10.png" /> Carrières Drâa-Tafilalt': layer_CarriresDraTafilalt_10,'<img src="legend/CarriresBniMellalKhnifra_9.png" /> Carrières Béni Mellal-Khénifra': layer_CarriresBniMellalKhnifra_9,'<img src="legend/CarriresRabatSalKnitra_8.png" /> Carrières Rabat-Salé-Kénitra': layer_CarriresRabatSalKnitra_8,'<img src="legend/CarriresFsMekns_7.png" /> Carrières Fès-Meknès': layer_CarriresFsMekns_7,'<img src="legend/CarriresTangerTtouanAlHoceima_6.png" /> Carrières Tanger-Tétouan-Al Hoceima': layer_CarriresTangerTtouanAlHoceima_6,'<img src="legend/CarriresSoussMassa_5.png" /> Carrières Souss-Massa': layer_CarriresSoussMassa_5,'<img src="legend/CarriresCasablancaSettat_4.png" /> Carrières Casablanca-Settat': layer_CarriresCasablancaSettat_4,'<img src="legend/CarriresMarrakechSafi_3.png" /> Carrières Marrakech-Safi': layer_CarriresMarrakechSafi_3,'<img src="legend/CarriresDakhlaOuedEdDahab_2.png" /> Carrières Dakhla-Oued Ed Dahab': layer_CarriresDakhlaOuedEdDahab_2,'<img src="legend/Rgions_1.png" /> Régions': layer_Rgions_1,'<img src="legend/Provinces_0.png" /> Provinces': layer_Provinces_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
